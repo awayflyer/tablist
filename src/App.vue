@@ -4,23 +4,20 @@ import List from './components/List.vue';
 import MyFooter from './components/MyFooter.vue';
 import Top from './components/Top.vue';
 //创建数据
-let tabdatas = reactive({
-    info: [{
-        id: "001",
-        title: "吃饭",
-        done: false
-    }, {
-        id: "002",
-        title: "睡觉",
-        done: false
-    }, {
-        id: "003",
-        title: "玩游戏",
-        done: false
-    }
-    ]
-})
-let tabdata = tabdatas["info"]
+let tabdata = reactive([{
+    id: "001",
+    title: "吃饭",
+    done: false
+}, {
+    id: "002",
+    title: "睡觉",
+    done: false
+}, {
+    id: "003",
+    title: "玩游戏",
+    done: false
+}
+])
 
 //新增数据
 function add(value) {
@@ -36,10 +33,14 @@ function handelcheck(id) {
 }
 //删除数据
 function del(id) {
-    tabdatas["info"] = tabdatas["info"].filter((item) => {
-        return item.id !== id
+    // tabdatas.info = tabdatas.info.filter((item) => {
+    //     return item.id !== id
+    // })
+    tabdata.forEach((item, index) => {
+        if (id === item.id) {
+            tabdata.splice(index, 1)
+        }
     })
-    console.log(tabdatas["info"]);
 }
 </script>
 
