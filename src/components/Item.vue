@@ -6,9 +6,9 @@ const del = props.del
 </script>
 
 <template>
-    <div class="list" v-for="i in props.data" :key="i.id">
+    <div class="list" v-for="i in props.data" :key="i.id" @click="handelcheck(i.id)">
         <div>
-            <input type="checkbox" :checked="i.done" @click="handelcheck(i.id)">
+            <input type="checkbox" :checked="i.done">
             <span>{{ i.title }}</span>
         </div>
         <button @click="del(i.id)">删除</button>
